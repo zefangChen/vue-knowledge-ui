@@ -6,6 +6,7 @@ Vue.use(Router)
 /*Router Modules*/
 import survey from './modules/survey'
 import table from './modules/table'
+import componentDemo from './modules/componentDemo'
 
 export const constantRouterMap =[
     {
@@ -20,6 +21,7 @@ export const constantRouterMap =[
     },
     survey,
     table,
+    componentDemo,
     {
         path: '/international',
         component: ()=> import('@/views/I18n/index'),
@@ -109,11 +111,29 @@ export const constantRouterMap =[
             title: 'Element走马灯高度调节',
             titleEn: 'carouselHeight'
         }
-    },
+    }
+]
 
+export const routerMap = [
+    {
+        path: '',
+        component: ()=> import('@/views/layout/AppMain'),
+        children: [
+            {
+                path: '/home-1',
+                component: ()=> import('@/views/home/index'),
+                name: 'home1',
+                icon: 'el-icon-s-home',
+                meta: {
+                    title: '全屏首页',
+                    titleEn: 'home1'
+                },
+            }
+        ]
+    },
 ]
 
 export default new Router({
     scrollBehavior: ()=>({y: 0}),
-    routes: constantRouterMap
+    routes: [...constantRouterMap, ...routerMap]
 })

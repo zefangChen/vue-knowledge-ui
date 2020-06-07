@@ -4,8 +4,8 @@
         <div class="left" ref="leftContent">
             <div
                 class="content"
-                :style="{'background-color': color}"
                 v-for="{color,value} in contentList"
+                :style="{'background-color': color}"
                 :key="value"
                 :ref="'content' + value"
             >
@@ -14,6 +14,8 @@
 
         </div>
         <div class="right">
+            <el-button @click="jumpBottom">滑到底部</el-button>
+            <el-button @click="jumpTop">滑到顶部</el-button>
             <div
                 class="menu"
                 v-for="{label, value} in menuList"
@@ -49,19 +51,94 @@
         },
         mounted(){
             // this.$refs.leftContent.addEventListener('scroll', this.scroll())
-            this.$refs.leftContent.addEventListener('scroll', this.scroll)
+            // this.$refs.leftContent.addEventListener('scroll', this.scroll)
         },
         methods: {
             scroll(val){
-                debugger
 
-                console.log(val)
             },
             jump (index) {
-                console.log(this.$refs['content'+index])
-                console.log(this.$refs['content'+index][0].offsetTop)
-                debugger
-                this.$refs['leftContent'][0].scrollTop = this.$refs['content'+index][0].offsetTop
+                let that = this;
+                let total = this.$refs['content'+index][0].offsetTop;
+                let step = total / 50; // 平滑滚动，时长500ms，每10ms一跳，共50跳
+                let distance = this.$refs.leftContent.scrollTop;
+
+                if (total > distance) {
+                    smoothDown()   //往下
+                } else {
+                    let newTotal = distance - total;
+                    step = newTotal / 50;
+                    smoothUp()  //往上
+                }
+
+                function smoothDown () {
+                    if (distance < total) {
+                        distance += step;
+                        // 移动一小段
+                        that.$refs.leftContent.scrollTop = distance;
+                        // 设定每一次跳动的时间间隔为10ms
+                        setTimeout(smoothDown, 10)
+                    } else {
+                        // 限制滚动停止时的距离
+                        that.$refs.leftContent.scrollTop = total;  //滚动到对应的位置
+                    }
+                }
+
+                function smoothUp() {
+                    if (distance > total) {
+                        distance -= step;
+                        that.$refs.leftContent.scrollTop = distance;
+                        setTimeout(smoothUp, 10)
+                    } else {
+                        that.$refs.leftContent.scrollTop = total;  //滚动到对应的位置
+                    }
+                }
+            },
+
+            jumpBottom() {
+                // 方法一：无动画效果
+                // this.$refs.leftContent.scrollTop = this.$refs.leftContent.scrollHeight;
+
+                //方法二：有动画，慢慢滑动效果
+                let that = this;  //有匿名函数，所以需要转换
+                let total = this.$refs.leftContent.scrollHeight;
+                let step = total / 50;// 平滑滚动，时长500ms，每10ms一跳，共50跳
+                let distance = this.$refs.leftContent.scrollTop;
+
+                 (function smoothDown () {
+                     if (distance < total) {
+                         distance += step;
+                         that.$refs.leftContent.scrollTop = distance;  // 移动一小段
+                         setTimeout(smoothDown, 15)  // 设定每一次跳动的时间间隔为10ms
+                     } else {
+                         // 限制滚动停止时的距离
+                         that.$refs.leftContent.scrollTop = total;  //滚动到对应的位置
+                     }
+                 })()
+            },
+
+            jumpTop() {
+                // 方法一：无动画效果
+                // this.$refs.leftContent.scrollTop = 0;
+
+                //方法二：有动画，慢慢滑动效果
+                let that = this;  //有匿名函数，所以需要转换
+                let total = 0;
+                let step = total / 50;  // 平滑滚动，时长500ms，每10ms一跳，共50跳
+                let distance = this.$refs.leftContent.scrollTop;
+
+                let newTotal = distance - total;
+                step = newTotal / 50;
+
+                (function smoothUp() {
+                    if (distance > total) {
+                        distance -= step;
+                        that.$refs.leftContent.scrollTop = distance;
+                        setTimeout(smoothUp, 10)
+                    } else {
+                        that.$refs.leftContent.scrollTop = total;  //滚动到对应的位置
+                    }
+                })()
 
             },
         }
@@ -83,9 +160,9 @@
         text-align: center;
     }
     .left{
-        max-height: 600px;
+        height: 1200px;
         max-width: 700px;
-        overflow-y: scroll;
+        overflow-y: auto;
     }
     .right{
         position: fixed;

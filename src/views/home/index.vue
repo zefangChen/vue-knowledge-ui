@@ -1,6 +1,8 @@
 <template>
     <div>
         图标绘制
+        <el-button>下一页</el-button>
+
         <provinceChart />
 
         <horizonBar />
@@ -10,6 +12,9 @@
         <labelType />
 
 
+        <div style="width: 100px;height: 500px;border: 1px solid #eee;">
+
+        </div>
     </div>
 </template>
 
@@ -18,6 +23,7 @@
     import horizonBar from './HorizonBar'
     import hobbyBar from './HobbyBar'
     import labelType from './LabelType'
+
     export default {
         name: "index",
         components: {
@@ -25,6 +31,18 @@
             horizonBar,
             hobbyBar,
             labelType
+        },
+
+        data() {
+            return {
+
+            }
+        },
+        computed: {
+
+        },
+        mounted() {
+
         },
     }
 </script>

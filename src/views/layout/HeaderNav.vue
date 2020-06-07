@@ -4,6 +4,7 @@
             <div class="left-nav">
                 <i class="fold-icon el-icon-s-unfold" v-if="isCollapse" @click="isCollapseMenu"></i>
                 <i class="fold-icon el-icon-s-fold" v-else @click="isCollapseMenu"></i>
+                <span @click="goHomePage">全屏首页</span>
             </div>
 
             <div class="right-menu">
@@ -39,6 +40,9 @@
             },
             isHandleScrollHead() {
                 this.handleScrollHead()
+            },
+            goHomePage() {
+                this.$router.push({name: 'home1'})
             },
 
         }
