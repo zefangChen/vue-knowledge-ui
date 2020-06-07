@@ -1,0 +1,14 @@
+/* 项目全局样式 */
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
+}
+.el-dialog__header {
+    background-color: #eeeeee75;
+}
+
+.el-dialog__footer {
+    text-align: center;
+}
