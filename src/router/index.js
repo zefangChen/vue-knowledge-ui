@@ -64,7 +64,7 @@ export const constantRouterMap =[
     },
     {
         path: '/excel',
-        // component: ()=> import('@/views/layout/index.vue'),
+        component: ()=> import('@/views/excelDownload/index.vue'),
         name: 'Excel',
         icon: 'el-icon-s-grid',
         meta: {

@@ -21,6 +21,7 @@
                 v-for="{label, value} in menuList"
                 @click="jump(value)"
                 :key="value"
+                :ref="'menu' + value"
             >
                 {{label}}
             </div>
@@ -45,17 +46,29 @@
                     {color: 'red', value: 1},
                     {color: 'blue', value: 2},
                     {color: 'yellow', value: 3},
-                    {color: 'green', value: 4},
+                    {color: 'green', value: 4}
                 ]
             }
         },
         mounted(){
-            // this.$refs.leftContent.addEventListener('scroll', this.scroll())
-            // this.$refs.leftContent.addEventListener('scroll', this.scroll)
+            this.$refs.leftContent.addEventListener('scroll', this.scroll)  //监听容器的滚动条
         },
         methods: {
-            scroll(val){
+            scroll(){
+                let scrollHeight = this.$refs.leftContent.scrollTop;
+                this.menuList.forEach(item=>{
+                    this.$refs['menu' + item.value][0].className = 'menu'
+                });
 
+                if(scrollHeight >= 0  && scrollHeight < 807) {
+                    this.$refs['menu1'][0].className = 'menu active-menu'
+                }else if(scrollHeight >= 807  && scrollHeight < 1600) {
+                    this.$refs['menu2'][0].className = 'menu active-menu'
+                }else if(scrollHeight >= 1614  && scrollHeight < 2080) {
+                    this.$refs['menu3'][0].className = 'menu active-menu'
+                }else if(scrollHeight >= 2080) {
+                    this.$refs['menu4'][0].className = 'menu active-menu'
+                }
             },
             jump (index) {
                 let that = this;
@@ -179,5 +192,11 @@
     .menu:hover{
         background-color: #4299e1;
         color: #fff;
+    }
+
+    .active-menu {
+        background-color: #4299e1;
+        color: #fff;
+        transition: 0.5s;
     }
 </style>
