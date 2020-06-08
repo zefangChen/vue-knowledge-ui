@@ -58,7 +58,7 @@
         },
         methods: {
             handleScroll() {
-                this.$nextTick(()=>{
+                this.$nextTick(()=>{n
                     let top = document.body.scrollHeight || document.documentElement.scrollHeight;
                     console.log(555,top)
                 })

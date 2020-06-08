@@ -56,16 +56,23 @@
                       {
                           name: '2012年',
                           type: 'bar',
+                          label: {
+                              show: true,  //右边数据显示
+                              position: 'right',
+                              color: '#333333',
+                              fontSize: 14,
+                              offset: [10, 0]
+                          },
                           data: [19325, 23438, 31000, 121594, 134141, 681807],
                           barWidth: '30px',  //柱状图每个柱子的宽度
                           barCategoryGap : '30%',  //柱子间距
                           itemStyle: {
                               normal: {
-                                  color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
-                                      offset: 0,
+                                  color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{   //0, 0, 0, 1是从上到下的变化
+                                      offset: 1,
                                       color: 'rgb(57,89,255,1)'
                                   }, {
-                                      offset: 1,
+                                      offset: 0,
                                       color: 'rgb(46,200,207,1)'
                                   }]),  //渐变色控制
                                   barBorderRadius: [0,50,50,0]  //控制柱子的圆角

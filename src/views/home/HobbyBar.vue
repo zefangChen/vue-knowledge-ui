@@ -69,10 +69,10 @@
                   series: [{
                       name: 'hill',
                       type: 'pictorialBar',
-                      barCategoryGap: '0%',
-                      symbol: 'path://M0,10 L10,10 C5.5,10 5.5,5 5,0 C4.5,5 4.5,10 0,10 z',
+                      barCategoryGap: '0%',  //负数则有交叉部分、正数则各个柱子无交叉部分
+                      symbol: 'path://M0,10 L10,10 C5.5,10 5.5,5 5,0 C4.5,5 4.5,10 0,10 z',  //控制图形的样式
                       label: {
-                          show: true,
+                          show: true,  //顶部数据显示
                           position: 'top',
                           distance: 15,
                           color: '#DB5E6A',

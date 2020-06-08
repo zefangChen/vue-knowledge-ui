@@ -36,6 +36,30 @@
                     trigger: 'item', //出发方式
                     formatter:'{b}-销售数量：{c}'
                 },
+                geo: {
+                    map: 'china',
+                    show: true,
+                    roam: true,
+                    label: {
+                        normal: {
+                            show: false
+                        },
+                        emphasis: {
+                            show: false,
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            areaColor: '#3a7fd5',
+                            borderColor: '#0a53e9',//线
+                            shadowColor: '#092f8f',//外发光
+                            shadowBlur: 20
+                        },
+                        emphasis: {
+                            areaColor: '#0a2dae',//悬浮区背景
+                        }
+                    }
+                },
                 //配置地图的数据，并且显示
                 series:[
                     {
