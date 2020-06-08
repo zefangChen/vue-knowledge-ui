@@ -51,9 +51,19 @@
             }
         },
         mounted(){
-            this.$refs.leftContent.addEventListener('scroll', this.scroll)  //监听容器的滚动条
+            // this.$refs.leftContent.addEventListener('scroll', this.scroll)  //监听容器的滚动条
+
+            window.addEventListener('scroll', this.handleScroll, true)
+
         },
         methods: {
+            handleScroll() {
+                this.$nextTick(()=>{
+                    let top = document.body.scrollHeight || document.documentElement.scrollHeight;
+                    console.log(555,top)
+                })
+            },
+
             scroll(){
                 let scrollHeight = this.$refs.leftContent.scrollTop;
                 this.menuList.forEach(item=>{
@@ -173,9 +183,9 @@
         text-align: center;
     }
     .left{
-        height: 1200px;
+        /*height: 1200px;*/
         max-width: 700px;
-        overflow-y: auto;
+        /*overflow-y: auto;*/
     }
     .right{
         position: fixed;
