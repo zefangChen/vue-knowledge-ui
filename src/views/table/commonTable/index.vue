@@ -51,6 +51,7 @@
                 :visible.sync="dialogVisible"
                 :close-on-click-modal="false"
                 width="800px"
+                v-el-drag-dialog
                 >
             <div>
                 <FeatureTree />
@@ -64,6 +65,7 @@
 </template>
 
 <script>
+    import elDragDialog from '@/views/directive/el-dragDialog' // base on element-ui
     import FeatureTree from './FeatureTree'
 
     export default {
@@ -71,6 +73,7 @@
         components: {
             FeatureTree
         },
+        directives: { elDragDialog },
         data() {
             return {
                 dialogVisible: false,

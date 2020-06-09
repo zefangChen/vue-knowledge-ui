@@ -1,6 +1,7 @@
 <template>
     <div>
-        图标绘制
+       <h1 class="animate__animated animate__fadeInUp" style="font-size: 50px;font-weight: bolder;margin-left: 100px;">首页标题、高端大气的文字动画效果</h1>
+
         <el-button>下一页</el-button>
 
         <provinceChart />

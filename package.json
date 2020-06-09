@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "30-seconds-of-code": "^1.2.3",
+    "animate.css": "^4.1.0",
     "core-js": "^3.6.5",
     "echarts": "^4.8.0",
     "element-ui": "^2.13.0",

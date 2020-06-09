@@ -68,7 +68,8 @@
                   ],
                   series: [{
                       name: 'hill',
-                      type: 'pictorialBar',
+                      // type: 'pictorialBar',
+                      type: 'scatter',
                       barCategoryGap: '0%',  //负数则有交叉部分、正数则各个柱子无交叉部分
                       symbol: 'path://M0,10 L10,10 C5.5,10 5.5,5 5,0 C4.5,5 4.5,10 0,10 z',  //控制图形的样式
                       label: {

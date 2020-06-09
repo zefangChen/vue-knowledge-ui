@@ -14,8 +14,12 @@
 
         </div>
         <div class="right">
-            <el-button @click="jumpBottom">滑到底部</el-button>
-            <el-button @click="jumpTop">滑到顶部</el-button>
+            <div style="margin-bottom: 20px;">
+                <el-button v-waves type="primary" @click="jumpBottom">滑到底部</el-button>
+                <el-button v-waves type="primary" @click="jumpTop">滑到顶部</el-button>
+                <div class="pan-btn blue-btn" @click="">效果按钮</div>
+            </div>
+
             <div
                 class="menu"
                 v-for="{label, value} in menuList"
@@ -32,8 +36,12 @@
 </template>
 
 <script>
+    import waves from '@/views/directive/waves/index.js' // 水波纹指令
     export default {
         name: "index",
+        directives: {
+            waves
+        },
         data(){
             return {
                 menuList : [
@@ -209,4 +217,5 @@
         color: #fff;
         transition: 0.5s;
     }
+
 </style>
