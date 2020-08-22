@@ -1,12 +1,15 @@
 <template>
     <div>
-        pdf
+    pdf
     </div>
 </template>
 
 <script>
     export default {
         name: "index",
+        components: {
+
+        },
         data() {
             return {
 

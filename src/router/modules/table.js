@@ -1,14 +1,14 @@
 const table = {
-    path: '/tableMgr',
+    path: 'tableMgr',
     component: ()=> import('@/views/layout/AppMain'),
-    name: 'table',
+    name: 'tableMgr',
     icon: 'el-icon-s-grid',
     meta: {
         title: '表格'
     },
     children: [
         {
-            path: '/commonTable',
+            path: 'commonTable',
             component: ()=> import('@/views/table/commonTable/index.vue'),
             name: 'commonTable',
             icon: 'el-icon-s-grid',
@@ -16,7 +16,6 @@ const table = {
                 title: '常规表格'
             }
         },
-
 
     ]
 }

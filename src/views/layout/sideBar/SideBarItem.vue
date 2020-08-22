@@ -10,13 +10,10 @@
                 </template>
 
                 <sideBarItem :routes="item.children"></sideBarItem>
-             <!--   <template v-for="(child, childIndex) in item.children">
-                    <el-menu-item :index="item.path">{{child.meta.title}}</el-menu-item>
-                </template>-->
             </el-submenu>
 
             <!--一层-->
-            <el-menu-item :index="item.path" v-else>
+            <el-menu-item :index="item.path" v-else v-show="!item.hidden" @click="goRouter(item.name)">
                 <i :class="item.icon" v-if="item.icon"></i>
                 <i class="el-icon-star-off" v-else></i>
                 <span slot="title">{{item.meta.title}}</span>
@@ -40,6 +37,11 @@
                 isCollapse: ({app}) => app.isCollapse
             }),
         },
+        methods: {
+            goRouter(name) {
+                this.$router.push({name})
+            }
+        }
     }
 </script>
 

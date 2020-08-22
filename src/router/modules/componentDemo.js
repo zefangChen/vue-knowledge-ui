@@ -1,5 +1,5 @@
 const componentDemo = {
-    path: '',
+    path: 'example',
     component: ()=> import('@/views/layout/AppMain'),
     name: 'table',
     icon: 'el-icon-s-grid',
@@ -8,7 +8,7 @@ const componentDemo = {
     },
     children: [
         {
-            path: '/countTo',
+            path: 'countTo',
             component: ()=> import('@/views/component-demo/countTo.vue'),
             name: 'countTo',
             icon: 'el-icon-s-grid',

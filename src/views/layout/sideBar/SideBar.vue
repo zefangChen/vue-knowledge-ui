@@ -1,14 +1,14 @@
 <template>
     <div class="sidebar">
-
         <el-scrollbar class="scrollbar-wrapper">
             <div class="logo">
-                <img src="../../../assets/img/name-logo1.png" alt="logo" style="width: 70%; height: 50px;" v-show="!isCollapse">
+                <img src="../../../assets/img/name-logo1.png" alt="logo" style="width: 70%; height: 50px;"
+                     v-show="!isCollapse">
                 <i class="el-icon-eleme" v-show="isCollapse"></i>
             </div>
             <el-menu
                     :default-active="$route.path"
-                    router
+                    :router="false"
                     class="el-menu-vertical-demo"
                     :collapse="isCollapse"
             >
@@ -19,9 +19,10 @@
 </template>
 
 <script>
-    import { constantRouterMap } from '@/router'
+    import {constantRouterMap} from '@/router'
     import {mapState, mapActions, mapGetters} from 'vuex'
     import SideBarItem from './SideBarItem'
+
     export default {
         name: "SideBar",
         components: {
@@ -29,20 +30,16 @@
         },
         data() {
             return {
-                menuList: [...constantRouterMap]
-
+                menuList: [...constantRouterMap[0].children]
             }
         },
         computed: {
             ...mapState({
                 isCollapse: ({app}) => app.isCollapse
             }),
-        /*    ...mapGetters([
-                'menuList'
-            ])*/
         },
-        mounted(){
-            console.log('menuList',this.menuList)
+        mounted() {
+            console.log('menuList', this.menuList)
         },
         methods: {
             ...mapActions({
@@ -50,25 +47,22 @@
             })
 
         },
-        watch: {
-
-
-        }
+        watch: {}
 
     }
 </script>
 
 <style lang="less">
-    .scrollbar-wrapper{
+    .scrollbar-wrapper {
         height: 100%;
-        .el-scrollbar__wrap{
-            overflow-x: hidden!important;
+        .el-scrollbar__wrap {
+            overflow-x: hidden !important;
         }
 
         .el-menu-vertical-demo:not(.el-menu--collapse) {
             width: 260px;
             height: 100%;
-            overflow-x: hidden!important;
+            overflow-x: hidden !important;
         }
     }
 
@@ -76,11 +70,16 @@
         text-align: center;
         padding: 4px;
         border-bottom: 1px solid #ddd;
+        background-color: #fff;
     }
 
     .el-icon-eleme {
         font-size: 40px;
         color: #409EFF;
         margin: 5px;
+    }
+
+    .sidebar {
+        background-color: #fff;
     }
 </style>

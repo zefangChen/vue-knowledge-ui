@@ -1,5 +1,5 @@
 const survey = {
-    path: '/surveyMgr',
+    path: 'surveyMgr',
     component: ()=> import('@/views/layout/AppMain'),
     name: 'survey',
     icon: 'el-icon-menu',
@@ -8,7 +8,7 @@ const survey = {
     },
     children: [
         {
-            path: '/surveyManagement',
+            path: 'surveyManagement',
             component: ()=> import('@/views/surveyMgr/survey/index.vue'),
             name: 'surveyManagement',
             icon: 'el-icon-document-checked',
@@ -17,7 +17,7 @@ const survey = {
             }
         },
         {
-            path: '/templateMgr',
+            path: 'templateMgr',
             component: ()=> import('@/views/surveyMgr/template/index.vue'),
             name: 'templateMgr',
             icon: 'el-icon-document',

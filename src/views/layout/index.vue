@@ -13,7 +13,8 @@
                             <HeaderNav></HeaderNav>
                         </el-header>
                         <el-main>
-                            <AppMain></AppMain>
+                            <!--<AppMain></AppMain>-->
+                            <router-view></router-view>
                         </el-main>
                     </div>
                 </el-scrollbar>
