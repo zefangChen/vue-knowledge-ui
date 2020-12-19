@@ -53,6 +53,12 @@
                 let point = new THREE.PointLight(0xffffff);
                 point.position.set(400, 200, 300); //点光源位置
                 this.scene.add(point); //点光源添加到场景中
+
+                // 两个点光源
+                let point2 = new THREE.PointLight(0xffffff);
+                point2.position.set(-400, -200, -300); //点光源位置
+                this.scene.add(point2); //点光源添加到场景中
+
                 //环境光
                 let ambient = new THREE.AmbientLight(0x444444);
                 this.scene.add(ambient);

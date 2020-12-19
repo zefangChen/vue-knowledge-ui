@@ -1,5 +1,9 @@
 <template>
-    <div id="loadContainer">
+    <div>
+        <h1>坐标位置是：</h1>
+
+        <div id="loadContainer" style="width: 300px;height: 300px;"></div>
+
 
     </div>
 </template>
@@ -47,7 +51,7 @@
                     console.log(obj);
                     this.scene.add(obj);
                     this.mesh = obj.children[0]; //获得心脏网格模型
-                    this.mesh.scale.set(10, 10, 10); //网格模型缩放
+                    this.mesh.scale.set(15, 15, 15); //网格模型缩放
                     // 创建一个纹理加载器
                     let textureLoader = new THREE.TextureLoader();
 
@@ -102,8 +106,8 @@
              */
             updateCamera() {
                 // this.width = window.innerWidth; //窗口宽度
-                this.width = 800; //窗口宽度
-                this.height = window.innerHeight; //窗口高度
+                this.width = 300; //窗口宽度
+                this.height = 300; //窗口高度
                 let k = this.width / this.height; //窗口宽高比
                 let s = 200; //三维场景显示范围控制系数，系数越大，显示的范围越大
                 //创建相机对象
